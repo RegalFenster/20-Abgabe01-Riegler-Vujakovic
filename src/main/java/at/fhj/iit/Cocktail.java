@@ -12,13 +12,39 @@ public class Cocktail extends Drink {
     }
 
     /**
+     * The total volume of the cocktail
+     */
+    private double cocktailVolume = 0;
+
+    /**
+     * The total volume of the cocktail's alcohol
+     */
+    private double alcoholVolume = 0;
+
+    /**
+     * Pours a liquid into the cocktail
+     *
+     * @param liquidToAdd the liquid to add
+     */
+    public Cocktail pour(Liquid liquidToAdd) {
+
+        double volumeOfLiquid = liquidToAdd.getVolume();
+        double alcoholOfLiquid = liquidToAdd.getAlcoholPercent() * volumeOfLiquid / 100;
+
+        cocktailVolume += volumeOfLiquid;
+        alcoholVolume += alcoholOfLiquid;
+
+        return this;
+    }
+
+    /**
      * Calculates and returns volume of drink
      *
      * @return the volume of drink in liter
      */
     @Override
     public double getVolume() {
-        return 0;
+        return cocktailVolume;
     }
 
     /**
