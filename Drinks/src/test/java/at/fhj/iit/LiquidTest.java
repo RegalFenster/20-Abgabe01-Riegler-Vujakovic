@@ -7,10 +7,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.text.SimpleDateFormat;
+
 
 @DisplayName("Testing Liquid implementation")
 public class LiquidTest {
 	private Liquid lN, lA;
+	private SimpleDrink lB;
 
 	/**
 	 * inits an alcoholic and nonalcoholic liquid for EACH test
@@ -20,6 +23,7 @@ public class LiquidTest {
 		// SETUP PHASE
 		lN = new Liquid("Wasser", 0.3, 0);
 		lA = new Liquid("Wein", 0.125, 13);
+		lB = new SimpleDrink("Simple Drink", lN);
 	}
 
 	@Test
@@ -28,6 +32,7 @@ public class LiquidTest {
 		assertEquals(lN.getName(), "Wasser");
 		assertEquals(lN.getVolume(), 0.3, 0.001);
 		assertEquals(lN.getAlcoholPercent(), 0, 0.001);
+		assertEquals(lB.getAlcoholPercent(), 0, 0.001);
 	}
 	@Test
 	@DisplayName("Testing constructor alcoholic")
