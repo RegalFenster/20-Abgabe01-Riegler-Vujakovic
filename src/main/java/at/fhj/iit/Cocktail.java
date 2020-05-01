@@ -54,7 +54,14 @@ public class Cocktail extends Drink {
      */
     @Override
     public double getAlcoholPercent() {
-        return 0;
+
+        if (cocktailVolume == 0) {
+            return 0;
+        }
+
+        double alcoholRatio = alcoholVolume / cocktailVolume;
+
+        return alcoholRatio * 100;
     }
 
     /**
