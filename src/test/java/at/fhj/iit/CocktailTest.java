@@ -22,17 +22,29 @@ class CocktailTest {
 
         c1 = new Cocktail("cocktail 1");
         c2 = new Cocktail("cocktail 2");
+
+        c1.pour(water);
+        c1.pour(vodka);
+        c1.pour(cream);
+        c1.pour(mangoJuice);
     }
 
     @Test
     @DisplayName("Testing if empty cocktail has zero volume")
-    public void testEmptyCocktailIsEmpty(){
-        assertEquals(0, c1.getVolume());
+    public void testEmptyCocktailIsEmpty() {
+        assertEquals(0, c2.getVolume());
     }
 
     @Test
     @DisplayName("Testing if empty cocktail has zero alcohol")
-    public void testEmptyCocktailHasNoAlcohol(){
-        assertEquals(0, c1.getAlcoholPercent());
+    public void testEmptyCocktailHasNoAlcohol() {
+        assertEquals(0, c2.getAlcoholPercent());
+    }
+
+
+    @Test
+    @DisplayName("Testing pour method")
+    public void testPourMethod() {
+        assertEquals(c1.pour(water), c1);
     }
 }
