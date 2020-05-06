@@ -10,8 +10,9 @@ public class Cocktail extends Drink {
      *
      * @param name name of the drink
      */
-    public Cocktail(String name) {
+    public Cocktail(String name, double maxVolume) {
         super(name);
+        this.maxVolume = maxVolume;
     }
 
     /**
@@ -30,9 +31,18 @@ public class Cocktail extends Drink {
     List<IceCube> iceCubes = new ArrayList<IceCube>();
 
     /**
+     * The max volume of the cocktail including ice
+     */
+    private double maxVolume;
+
+    /**
      * Pours a liquid into the cocktail
      *
      * @param liquidToAdd the liquid to add
+     *
+     * @throws CocktailOverflowException if the cocktail has overflowed
+     *
+     * @return the Cocktail object on which the method was called
      */
     public Cocktail pour(Liquid liquidToAdd) {
 
@@ -42,6 +52,10 @@ public class Cocktail extends Drink {
         cocktailVolume += volumeOfLiquid;
         alcoholVolume += alcoholOfLiquid;
 
+        if(getVolume() > maxVolume) {
+            throw new CocktailOverflowException();
+        }
+
         return this;
     }
 
@@ -49,10 +63,18 @@ public class Cocktail extends Drink {
      * Adds an ice cube to the cocktail mix
      *
      * @param iceCube the ice cube to add
+     *
+     * @throws CocktailOverflowException if the cocktail has overflowed
+     *
+     * @return the Cocktail object on which the method was called
      */
-    public Cocktail dropIceCube(IceCube iceCube){
+    public Cocktail dropIceCube(IceCube iceCube) {
 
         iceCubes.add(iceCube);
+
+        if(getVolume() > maxVolume) {
+            throw new CocktailOverflowException();
+        }
 
         return this;
     }
@@ -60,11 +82,18 @@ public class Cocktail extends Drink {
     /**
      * Calculates and returns volume of drink
      *
-     * @return the volume of drink in liter
+     * @return the volume of drink including ice cubes in liters
      */
     @Override
     public double getVolume() {
-        return cocktailVolume;
+
+        double  iceCubeVolume = 0;
+
+        for(IceCube iceCube : iceCubes) {
+            iceCubeVolume += iceCube.getVolume();
+        }
+
+        return iceCubeVolume + cocktailVolume;
     }
 
     /**

@@ -1,65 +1,84 @@
 package at.fhj.iit;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CocktailTest {
 
     private Liquid water, vodka, cream, mangoJuice;
-    private Cocktail c1, c2;
+    private Cocktail fullCocktail, emptyCocktail;
 
     @BeforeEach
     void setUp() {
         // SETUP PHASE
-        water = new Liquid("Wasser", 0.3, 0);
-        vodka = new Liquid("Wodka", 0.05, 39.90);
-        cream = new Liquid("Obers", 0.2, 0);
-        mangoJuice = new Liquid("Mangosaft", 0.5, 0.01);
+        water = new Liquid("Wasser", 0.03, 0);
+        vodka = new Liquid("Wodka", 0.005, 39.90);
+        cream = new Liquid("Obers", 0.02, 0);
+        mangoJuice = new Liquid("Mangosaft", 0.05, 0.01);
 
-        c1 = new Cocktail("cocktail 1");
-        c2 = new Cocktail("cocktail 2");
+        fullCocktail = new Cocktail("cocktail 1", 0.5);
+        emptyCocktail = new Cocktail("cocktail 2", 0.5);
 
-        c1.pour(water);
-        c1.pour(vodka);
-        c1.pour(cream);
-        c1.pour(mangoJuice);
+        fullCocktail.pour(water);
+        fullCocktail.pour(vodka);
+        fullCocktail.pour(cream);
+        fullCocktail.pour(mangoJuice);
+
     }
 
     @Test
     @DisplayName("Testing if empty cocktail has zero volume")
     public void testEmptyCocktailIsEmpty() {
-        assertEquals(0, c2.getVolume());
+        assertEquals(0, emptyCocktail.getVolume());
     }
 
     @Test
     @DisplayName("Testing if empty cocktail has zero alcohol")
     public void testEmptyCocktailHasNoAlcohol() {
-        assertEquals(0, c2.getAlcoholPercent());
+        assertEquals(0, emptyCocktail.getAlcoholPercent());
     }
 
 
     @Test
     @DisplayName("Testing pour method")
     public void testPourMethod() {
-        assertEquals(c1.pour(water), c1);
+        assertEquals(fullCocktail.pour(water), fullCocktail);
     }
 
 
     @Test
     @DisplayName("Testing alcohol percent of cocktail")
     public void testAlcoholPercentOfCocktail() {
-        assertEquals(c1.getAlcoholPercent(), 1.9047619047619049);
+        assertEquals(fullCocktail.getAlcoholPercent(), 1.9047619047619049);
     }
 
     @Test
     @DisplayName("Testing if cocktail is alcoholic")
     public void testIsCocktailAlcohol() {
-        assertTrue(c1.isAlcoholic());
+        assertTrue(fullCocktail.isAlcoholic());
+    }
 
+    @Test
+    @DisplayName("Testing if CocktailOverflowException is thrown when pouring juice")
+    public void testCocktailOverflowsWithJuice() {
+        assertThrows(CocktailOverflowException.class, () -> {
+            fullCocktail.pour(mangoJuice).pour(mangoJuice).pour(mangoJuice)
+                        .pour(mangoJuice).pour(mangoJuice).pour(mangoJuice)
+                        .pour(mangoJuice).pour(mangoJuice).pour(mangoJuice)
+                        .pour(mangoJuice).pour(mangoJuice).pour(mangoJuice);
+        });
+    }
 
+    @Test
+    @DisplayName("Testing if CocktailOverflowException is thrown when dropping ice cubes")
+    public void testCocktailOverflowsWithIceCubes() {
+        assertThrows(CocktailOverflowException.class, () -> {
+            IceCube icecube = new IceCube(0.5);
+            fullCocktail.dropIceCube(icecube);
+        });
     }
 }
