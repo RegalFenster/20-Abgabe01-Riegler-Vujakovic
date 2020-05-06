@@ -1,5 +1,8 @@
 package at.fhj.iit;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cocktail extends Drink {
 
     /**
@@ -22,6 +25,11 @@ public class Cocktail extends Drink {
     private double alcoholVolume = 0;
 
     /**
+     * Creating ArrayList with ice cubes
+     */
+    List<IceCube> iceCubes = new ArrayList<IceCube>();
+
+    /**
      * Pours a liquid into the cocktail
      *
      * @param liquidToAdd the liquid to add
@@ -33,6 +41,18 @@ public class Cocktail extends Drink {
 
         cocktailVolume += volumeOfLiquid;
         alcoholVolume += alcoholOfLiquid;
+
+        return this;
+    }
+
+    /**
+     * Adds an ice cube to the cocktail mix
+     *
+     * @param iceCube the ice cube to add
+     */
+    public Cocktail dropIceCube(IceCube iceCube){
+
+        iceCubes.add(iceCube);
 
         return this;
     }
@@ -75,4 +95,5 @@ public class Cocktail extends Drink {
     public boolean isAlcoholic() {
         return getAlcoholPercent() >= 0.1;
     }
+
 }
