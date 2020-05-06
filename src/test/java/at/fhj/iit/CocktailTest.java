@@ -63,13 +63,20 @@ class CocktailTest {
     }
 
     @Test
+    @DisplayName("Testing to drop icecube in cocktail")
+    public void testDropIceCube() {
+        IceCube icecube = new IceCube(0.5);
+        assertEquals(emptyCocktail.dropIceCube(icecube), emptyCocktail);
+    }
+
+    @Test
     @DisplayName("Testing if CocktailOverflowException is thrown when pouring juice")
     public void testCocktailOverflowsWithJuice() {
         assertThrows(CocktailOverflowException.class, () -> {
             fullCocktail.pour(mangoJuice).pour(mangoJuice).pour(mangoJuice)
-                        .pour(mangoJuice).pour(mangoJuice).pour(mangoJuice)
-                        .pour(mangoJuice).pour(mangoJuice).pour(mangoJuice)
-                        .pour(mangoJuice).pour(mangoJuice).pour(mangoJuice);
+                    .pour(mangoJuice).pour(mangoJuice).pour(mangoJuice)
+                    .pour(mangoJuice).pour(mangoJuice).pour(mangoJuice)
+                    .pour(mangoJuice).pour(mangoJuice).pour(mangoJuice);
         });
     }
 
