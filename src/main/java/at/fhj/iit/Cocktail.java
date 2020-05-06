@@ -73,6 +73,6 @@ public class Cocktail extends Drink {
      */
     @Override
     public boolean isAlcoholic() {
-        return getAlcoholPercent() <= 0.1;
+        return getAlcoholPercent() >= 0.1;
     }
 }

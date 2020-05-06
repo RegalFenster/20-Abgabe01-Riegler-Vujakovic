@@ -1,6 +1,7 @@
 package at.fhj.iit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 
 import org.junit.jupiter.api.BeforeEach;
@@ -35,6 +36,6 @@ public class SimpleDrinkTest {
     @Test
     @DisplayName("Testing is alcoholic")
     public void testIsAlcoholic() {
-        assertEquals(soda.isAlcoholic(), false);
+        assertFalse(soda.isAlcoholic());
     }
 }
