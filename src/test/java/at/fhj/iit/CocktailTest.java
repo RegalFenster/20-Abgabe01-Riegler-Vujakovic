@@ -47,4 +47,19 @@ class CocktailTest {
     public void testPourMethod() {
         assertEquals(c1.pour(water), c1);
     }
+
+
+    @Test
+    @DisplayName("Testing alcohol percent of cocktail")
+    public void testAlcoholPercentOfCocktail() {
+        assertEquals(c1.getAlcoholPercent(), 1.9047619047619049);
+    }
+
+    @Test
+    @DisplayName("Testing if cocktail is alcoholic")
+    public void testIsCocktailAlcohol() {
+        assertTrue(c1.isAlcoholic());
+
+
+    }
 }
