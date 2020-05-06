@@ -20,4 +20,9 @@ public class SimpleDrinkTest {
         soda = new SimpleDrink("Soda", water);
     }
 
+    @Test
+    @DisplayName("Testing volume")
+    public void testVolumeGetter() {
+        assertEquals(soda.getVolume(), 0.3, 0.001);
+    }
 }
