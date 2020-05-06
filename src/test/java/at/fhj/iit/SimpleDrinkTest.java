@@ -1,24 +1,26 @@
 package at.fhj.iit;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 
 @DisplayName("Testing SimpleDrink implementation")
 public class SimpleDrinkTest {
-    private SimpleDrink soda;
-    private Liquid water;
+    private SimpleDrink soda, shot;
+    private Liquid water, schnapps;
 
     @BeforeEach
     void setup() {
         // SETUP PHASE
         water = new Liquid("Wasser", 0.3, 0);
+        schnapps = new Liquid("Wodka", 0.05, 39.90);
         soda = new SimpleDrink("Soda", water);
+        shot = new SimpleDrink("Shot", schnapps);
+
     }
 
     @Test
@@ -36,6 +38,7 @@ public class SimpleDrinkTest {
     @Test
     @DisplayName("Testing is alcoholic")
     public void testIsAlcoholic() {
+        assertTrue(shot.isAlcoholic());
         assertFalse(soda.isAlcoholic());
     }
 }
