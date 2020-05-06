@@ -31,4 +31,10 @@ public class SimpleDrinkTest {
     public void testAlcoholPercent() {
         assertEquals(soda.getAlcoholPercent(), 0, 0.001);
     }
+
+    @Test
+    @DisplayName("Testing is alcoholic")
+    public void testIsAlcoholic() {
+        assertEquals(soda.isAlcoholic(), false);
+    }
 }
