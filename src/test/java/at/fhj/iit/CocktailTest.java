@@ -12,6 +12,10 @@ class CocktailTest {
     private Liquid water, vodka, cream, mangoJuice;
     private Cocktail fullCocktail, emptyCocktail;
 
+    /**
+     * Inits a cocktail witch liquids before each test
+     */
+
     @BeforeEach
     void setUp() {
         // SETUP PHASE
@@ -30,47 +34,63 @@ class CocktailTest {
 
     }
 
+    /**
+     * Tests if empty cocktail has zero volume
+     */
     @Test
     @DisplayName("Testing if empty cocktail has zero volume")
     public void testEmptyCocktailIsEmpty() {
         assertEquals(0, emptyCocktail.getVolume());
     }
 
+    /**
+     * Tests if empty cocktail has zero alcohol
+     */
     @Test
     @DisplayName("Testing if empty cocktail has zero alcohol")
     public void testEmptyCocktailHasNoAlcohol() {
         assertEquals(0, emptyCocktail.getAlcoholPercent());
     }
 
-
+    /**
+     * Tests pour method
+     */
     @Test
     @DisplayName("Testing pour method")
     public void testPourMethod() {
         assertEquals(fullCocktail.pour(water), fullCocktail);
     }
 
-
+    /**
+     * Tests alcohol percent of cocktail
+     */
     @Test
     @DisplayName("Testing alcohol percent of cocktail")
     public void testAlcoholPercentOfCocktail() {
         assertEquals(fullCocktail.getAlcoholPercent(), 1.9047619047619049);
     }
 
+    /**
+     * Tests if cocktail is alcoholic
+     */
     @Test
     @DisplayName("Testing if cocktail is alcoholic")
     public void testIsCocktailAlcohol() {
         assertTrue(fullCocktail.isAlcoholic());
     }
 
+    /**
+     * Tests to drop ice cube in cocktail
+     */
     @Test
-    @DisplayName("Testing to drop icecube in cocktail")
+    @DisplayName("Testing to drop ice cube in cocktail")
     public void testDropIceCube() {
         IceCube icecube = new IceCube(0.5);
         assertEquals(emptyCocktail.dropIceCube(icecube), emptyCocktail);
     }
 
     /**
-     * Testing if CocktailOverflowException is thrown when pouring juice
+     * Tests if CocktailOverflowException is thrown when pouring juice
      */
     @Test
     @DisplayName("Testing if CocktailOverflowException is thrown when pouring juice")
@@ -84,7 +104,7 @@ class CocktailTest {
     }
 
     /**
-     * Testing if CocktailOverflowException is thrown when dropping ice cubes
+     * Tests if CocktailOverflowException is thrown when a ice cubes is dropped
      */
     @Test
     @DisplayName("Testing if CocktailOverflowException is thrown when dropping ice cubes")

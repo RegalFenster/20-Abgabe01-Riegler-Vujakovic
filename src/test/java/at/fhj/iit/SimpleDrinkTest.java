@@ -13,6 +13,9 @@ public class SimpleDrinkTest {
     private SimpleDrink soda, shot;
     private Liquid water, schnapps;
 
+    /**
+     * inits liquids and simpleDrinks before each test
+     */
     @BeforeEach
     void setup() {
         // SETUP PHASE
@@ -23,18 +26,28 @@ public class SimpleDrinkTest {
 
     }
 
+    /**
+     * Tests volume
+     */
+
     @Test
     @DisplayName("Testing volume")
     public void testVolumeGetter() {
         assertEquals(soda.getVolume(), 0.3, 0.001);
     }
 
+    /**
+     * Tests alcohol percent"
+     */
     @Test
     @DisplayName("Testing alcohol percent")
     public void testAlcoholPercent() {
         assertEquals(soda.getAlcoholPercent(), 0, 0.001);
     }
 
+    /**
+     * Tests alcohol percent"
+     */
     @Test
     @DisplayName("Testing is alcoholic")
     public void testIsAlcoholic() {
