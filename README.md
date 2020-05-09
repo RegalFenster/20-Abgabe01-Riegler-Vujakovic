@@ -27,6 +27,19 @@ It will calculate the alcohol content accordingly.
 The second subclass will allow to add simple icecubes to the cocktails with the plan to
 use this class for the later used Overflow OverflowException.
 
+The code snippet for the ice cube drop in the CcoktailClass:
+```java
+public Cocktail dropIceCube(IceCube iceCube) {
+
+        iceCubes.add(iceCube);
+
+        if(getVolume() > maxVolume) {
+            throw new CocktailOverflowException();
+        }
+
+        return this;
+    }
+```
 ## Plan for JUnit Tests
 
 Implement JUnit Tests for subclass Cocktail and SimpleDrink and test for 100% coverage.
@@ -35,3 +48,10 @@ The existing methods in Cocktail and SimpleDrinks will be used.
 ## Plan for Exceptions in CocktailClass
 
 Implement a list for the icecubes a cocktail can hold and try to catch an OverflowException when too much icecubes are dropped.
+
+Code of CocktailOverflowException:
+```java
+public class CocktailOverflowException extends RuntimeException {
+
+}
+```
