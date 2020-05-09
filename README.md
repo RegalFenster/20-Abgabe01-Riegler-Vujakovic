@@ -24,11 +24,13 @@ It will calculate the alcohol content accordingly.
 
 ## Plan for the second subclass Icecube
 
-The second subclass will allow to add icecubes to the cocktails.
+The second subclass will allow to add simple icecubes to the cocktails with the plan to
+use this class for the later used Overflow OverflowException.
 
 ## Plan for JUnit Tests
 
 Implement JUnit Tests for subclass Cocktail and SimpleDrink and test for 100% coverage.
+The existing methods in Cocktail and SimpleDrinks will be used.
 
 ## Plan for Exceptions in CocktailClass
 
