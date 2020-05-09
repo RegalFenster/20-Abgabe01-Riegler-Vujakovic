@@ -62,7 +62,7 @@ class CocktailTest {
     }
 
     /**
-     * Tests alcohol percent of cocktail
+     * Tests alcohol percent of full cocktail
      */
     @Test
     @DisplayName("Testing alcohol percent of cocktail")
@@ -71,7 +71,7 @@ class CocktailTest {
     }
 
     /**
-     * Tests if cocktail is alcoholic
+     * Tests if full cocktail is alcoholic
      */
     @Test
     @DisplayName("Testing if cocktail is alcoholic")
@@ -80,7 +80,17 @@ class CocktailTest {
     }
 
     /**
-     * Tests to drop ice cube in cocktail
+     * Tests volume of full cocktail
+     */
+    @Test
+    @DisplayName("Testing volume of full cocktail")
+    public void testIsCocktailVolume() {
+        assertEquals(fullCocktail.getVolume(), 0.105);
+    }
+
+
+    /**
+     * Tests to drop ice cube in empty cocktail
      */
     @Test
     @DisplayName("Testing to drop ice cube in cocktail")
@@ -104,7 +114,7 @@ class CocktailTest {
     }
 
     /**
-     * Tests if CocktailOverflowException is thrown when a ice cubes is dropped
+     * Tests if CocktailOverflowException is thrown when a ice cubes is dropped in full cocktail
      */
     @Test
     @DisplayName("Testing if CocktailOverflowException is thrown when dropping ice cubes")
