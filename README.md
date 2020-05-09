@@ -27,7 +27,7 @@ It will calculate the alcohol content accordingly.
 The second subclass will allow to add simple icecubes to the cocktails with the plan to
 use this class for the later used Overflow OverflowException.
 
-The code snippet for the ice cube drop in the CcoktailClass:
+The code snippet for the ice cube drop in the CoktailClass:
 ```java
 public Cocktail dropIceCube(IceCube iceCube) {
 
@@ -49,9 +49,3 @@ The existing methods in Cocktail and SimpleDrinks will be used.
 
 Implement a list for the icecubes a cocktail can hold and try to catch an OverflowException when too much icecubes are dropped.
 
-Code of CocktailOverflowException:
-```java
-public class CocktailOverflowException extends RuntimeException {
-
-}
-```
