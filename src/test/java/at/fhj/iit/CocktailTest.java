@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class CocktailTest {
 
     private Liquid water, vodka, cream, mangoJuice;
-    private Cocktail fullCocktail, emptyCocktail;
+    private Cocktail fullCocktail, emptyCocktail, hugeEmptyCocktail;
 
     /**
      * Inits a cocktail witch liquids before each test
@@ -26,6 +26,7 @@ class CocktailTest {
 
         fullCocktail = new Cocktail("cocktail 1", 0.5);
         emptyCocktail = new Cocktail("cocktail 2", 0.5);
+        hugeEmptyCocktail = new Cocktail("Großer leerer Cocktail", 2);
 
         fullCocktail.pour(water);
         fullCocktail.pour(vodka);
@@ -87,7 +88,6 @@ class CocktailTest {
         assertEquals(fullCocktail.getVolume(), 0.105);
     }
 
-
     /**
      * Tests to drop ice cube in empty cocktail
      */
@@ -132,8 +132,19 @@ class CocktailTest {
     public void testAlcoholIsDilutedByIce() {
         Liquid pureAlcohol = new Liquid("Purer Alkohol", 1, 100);
         IceCube icecube = new IceCube(1);
-        Cocktail hugeEmptyCocktail = new Cocktail("Großer leerer Cocktail", 2);
         hugeEmptyCocktail.pour(pureAlcohol).dropIceCube(icecube);
         assertEquals(50, hugeEmptyCocktail.getAlcoholPercent());
+    }
+
+    /**
+     * Tests whether the volumes of two liquids are added correctly
+     */
+    @Test
+    @DisplayName("Testing whether the volumes of two liquids are added correctly")
+    public void testIfVolumesOfTwoLiquidsAreAddedCorrectly() {
+        Liquid orangeJuice = new Liquid("Orangensaft", 1, 0);
+        Liquid tequila = new Liquid("Tequila", 1, 38.0);
+        hugeEmptyCocktail.pour(orangeJuice).pour(tequila);
+        assertEquals(2, hugeEmptyCocktail.getVolume());
     }
 }
