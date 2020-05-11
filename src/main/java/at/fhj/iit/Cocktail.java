@@ -108,7 +108,7 @@ public class Cocktail extends Drink {
             return 0;
         }
 
-        double alcoholRatio = alcoholVolume / cocktailVolume;
+        double alcoholRatio = alcoholVolume / getVolume();
 
         return alcoholRatio * 100;
     }

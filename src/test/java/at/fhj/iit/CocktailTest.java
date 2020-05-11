@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CocktailTest {
 
@@ -31,7 +31,6 @@ class CocktailTest {
         fullCocktail.pour(vodka);
         fullCocktail.pour(cream);
         fullCocktail.pour(mangoJuice);
-
     }
 
     /**
@@ -123,5 +122,18 @@ class CocktailTest {
             IceCube icecube = new IceCube(0.5);
             fullCocktail.dropIceCube(icecube);
         });
+    }
+
+    /**
+     * Tests whether alcohol is diluted by ice
+     */
+    @Test
+    @DisplayName("Testing whether alcohol is diluted by ice")
+    public void testAlcoholIsDilutedByIce() {
+        Liquid pureAlcohol = new Liquid("Purer Alkohol", 1, 100);
+        IceCube icecube = new IceCube(1);
+        Cocktail hugeEmptyCocktail = new Cocktail("Großer leerer Cocktail", 2);
+        hugeEmptyCocktail.pour(pureAlcohol).dropIceCube(icecube);
+        assertEquals(50, hugeEmptyCocktail.getAlcoholPercent());
     }
 }
