@@ -59,7 +59,11 @@ class CocktailTest {
     @DisplayName("Testing pour method")
     public void testPourMethod() {
         assertEquals(fullCocktail.pour(water), fullCocktail);
+        assertEquals(fullCocktail.pour(vodka), fullCocktail);
+        assertEquals(fullCocktail.pour(cream), fullCocktail);
+        assertEquals(fullCocktail.pour(mangoJuice), fullCocktail);
     }
+
 
     /**
      * Tests alcohol percent of full cocktail
@@ -86,6 +90,14 @@ class CocktailTest {
     @DisplayName("Testing volume of full cocktail")
     public void testIsCocktailVolume() {
         assertEquals(fullCocktail.getVolume(), 0.105);
+        fullCocktail.pour(water);
+        assertEquals(fullCocktail.getVolume(),0.135);
+        fullCocktail.pour(vodka);
+        assertEquals(fullCocktail.getVolume(),0.14);
+        fullCocktail.pour(cream);
+        assertEquals(fullCocktail.getVolume(),0.16);
+        fullCocktail.pour(mangoJuice);
+        assertEquals(fullCocktail.getVolume(),0.21000000000000002);
     }
 
     /**
